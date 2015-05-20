@@ -70,7 +70,7 @@ MongoClient.connect(process.env.mongodb, function(err, db) {
 
                             dbdonation.insert([obj], function(err, result){
                                 getwalletinfo(function(err, wallet){
-                                    res.render('index', {
+                                    res.render('testnet/index', {
                                         success: amount + " ZRC is on its way to your wallet " + req.body.address,
                                         donate: parseFloat((wallet.balance / 100).toFixed(8)),
                                         wallet: wallet
@@ -88,7 +88,7 @@ MongoClient.connect(process.env.mongodb, function(err, db) {
                 });
             }else{
                 getwalletinfo(function(err, wallet){
-                    res.render('index', {
+                    res.render('testnet/index', {
                         alert: "Please wait 5 minutes between each withdrawal.",
                         donate: parseFloat((wallet.balance / 100).toFixed(8)),
                         wallet: wallet
