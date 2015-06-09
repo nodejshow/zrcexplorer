@@ -1,0 +1,34 @@
+extends ../layout
+block content
+    .row
+        .col-sm-12
+            .page-header
+                img#ziftrCOIN(src='/images/ziftrCOIN_coin.png')
+                h1
+                    | ziftrCOIN Explorer
+                    small 
+                        | testnet
+                if success
+                    .alert.alert-success(role='alert') #{success}
+                if wallet.balance < 10
+                    .alert.alert-warning(role='alert') Please, we are running out of ziftrCOINS. Please make a small donation <3
+                if alert
+                    .alert.alert-danger(role='alert') #{alert}
+                .jumbotron
+                    p
+                        strong Balance:
+                        span 
+                        | #{wallet.balance} ZRC
+                    p
+                        strong We will give you:
+                        span 
+                        | #{donate} ZRC
+                    p
+                        strong Donations: 
+                        span
+                        | mmTPFJRbGGQST2GKLY7GAcKMoGjXo6WJtd
+                    form(method='post', action='/testnet/freecoin')
+                        .input-group.input-group-lg
+                            span.input-group-btn
+                                button.btn.btn-default(type='submit') Send
+                            input.form-control(type='text', name='address', placeholder='Address')

@@ -1,0 +1,69 @@
+extends layout
+block content
+    .row
+        .col-sm-12
+            .page-header
+                img#ziftrCOIN(src='/images/ziftrCOIN_coin.png')
+                h1
+                    | ziftrCOIN Explorer
+                    small 
+                        | testnet
+    .row
+        .col-md-8
+            h1 Search
+        .col-md-4
+            .row
+                .col-md-12 Blocks: #{info.blocks}
+            .row
+                .col-md-12 Difficulty: #{info.difficulty}
+            .row
+                - hashps = info.networkhashps / 1000000
+                .col-md-12 Network hashrate: #{hashps} MH/s
+    .row
+        .col-md-6
+            table.table.table-stats
+                tbody
+                    tr
+                        th.col-xs-4 Height
+                        td.col-xs-8.ng-binding #{block.height}
+                    tr
+                        th Block Time
+                        td.ng-binding #{block.time}
+                    tr
+                        th Size
+                        td.ng-binding #{block.size}
+                    tr
+                        th Difficulty
+                        td.ng-binding #{block.difficulty}
+                    tr
+                        th Version
+                        td.ng-binding #{block.version}
+        .col-md-6
+            table.table.table-stats
+                tbody
+                    tr
+                        th.col-xs-4 TXs
+                        td.col-xs-8 #{block.count}
+                    tr
+                        th Total Value
+                        td #{block.sum} ZFT
+                    tr
+                        th Confirmations
+                        td.ng-binding #{block.confirmations}
+                    tr
+                        th Mined By
+                            td
+                                a.ng-binding(href='#') NEED HELP WITH THIS!
+    .row
+        each txs in txData
+            table.table
+                thead
+                    tr
+                        th(colspan='2') #{txs.id}
+                tbody
+                    each tx in txs.tx
+                        tr
+                            td #{tx.value}
+                            td
+                                each addresses in tx.addresses
+                                    | #{addresses}
