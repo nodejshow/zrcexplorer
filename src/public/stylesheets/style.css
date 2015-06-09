@@ -1,8 +1,7 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+#ziftrCOIN {
+	width: 50px;
+	height: 50px;
 }
-
-a {
-  color: #00B7FF;
+#mainContainer {
+	  margin-top: 35px;
 }
